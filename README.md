@@ -1,27 +1,33 @@
 This module contains 4 types of limiters that are capable
 of interrupting a function according to its RAM usage,
 computational time, active threads or active processes,
-through the use of a wrapper. This module does this by
-running the wrapped function in a parent process along
-side two threads, this group is known as the Interrupter
-that monitors, communicates and initiates the safe
-termination of the parent process, its child
-processes/threads and nested threads (Note: **THIS EXCLUDES
-NESTED CHILD PROCESSES**). The controlled termination of
-the parent process results in the freeing of all resources
-used in the parent process, including resources used by the
-wrapped function. Any and all errors are caught and raised
-in the main process after safely termiating the parent
-process. Communication between the current process and the
-parent process are based on the use of Event and SimpleQueue
-pipes, therefore, information flow from the wrapped function
-to the current process is limited, potentially causing a
-bottleneck. The main application for this wrapper is for
-stability testing. Furthermore, this application has customization
-support, allowing for the monitoring of different factors
-(see the Custom section for more information).
+through the use of a wrapper.  
 
-Python: 3.3, 3.4, 3.5, 3.6, 3.7, 3.8
+The module provides wrappers that runs a function in a
+parent process along side two threads, this group of
+threads are known as the Interrupter, which monitors,
+communicates and initiates the safe termination of the
+parent process, its child processes/threads and nested
+threads (Note: **THIS EXCLUDES NESTED CHILD PROCESSES**).  
+
+The controlled termination of the parent process results in
+the freeing of all resources used in the parent process,
+including resources used by the wrapped function. Any and
+all errors are caught and raised in the main process after
+safely termiating the parent process.  
+
+Communication between the current process and the parent
+process are based on the use of Event and SimpleQueue pipes,
+therefore, information flow from the wrapped function to the
+current process is limited, potentially causing a bottleneck.  
+
+The main application for this wrapper is for stability testing.  
+
+Furthermore, this application has customization support, allowing
+for the monitoring of different factors (see the Custom section
+for more information).
+
+**Python:** 3.3, 3.4, 3.5, 3.6, 3.7, 3.8  
 
 ## Note:
 **The Interrupter is NOT capable of safely**
